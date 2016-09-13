@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "197270777723",
+    "firebase_url": "https://fimo-msn.firebaseio.com",
+    "project_id": "fimo-msn",
+    "storage_bucket": "fimo-msn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197270777723:android:70d7251629468c42",
+        "android_client_info": {
+          "package_name": "com.fimomsn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197270777723-l0blk5c9nqtb49qoho8nefuip6gdb40c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO9J7a0IytTImHy1cgu-UFd7im3zVslV8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
