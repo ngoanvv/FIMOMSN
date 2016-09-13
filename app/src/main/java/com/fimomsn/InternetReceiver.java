@@ -36,12 +36,12 @@ public class InternetReceiver extends BroadcastReceiver {
         Intent alarmIntent = new Intent(context, AlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, 0);
         if(isConnected(context)) {
-            makeNotification("Internet connected",context);
+            makeNotification("Đã kết nối Internet, dữ liệu nhiệt độ sẽ được thông báo khi có tình huống xấu",context);
             setAlarm(context);
         }
         else
         {
-            makeNotification("Internet disconnected",context);
+            makeNotification("Kết nối Internet đã ngắt, dữ liệu nhiệt độ sẽ không được cập nhật",context);
             cancelAlarm(context);
         }
     }
