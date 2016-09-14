@@ -56,7 +56,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                     record.setTime(messageSnapshot.child("time").getValue().toString()+" , "+messageSnapshot.child("date").getValue().toString());
                     records.add(record);
                 }
-                if(Integer.valueOf(records.get(9).getTemp().substring(0,2))>22)
+                if(Integer.valueOf(records.get(9).getTemp().substring(0,2))>29)
                     makeNotification(context,12121,"Alarm : Chú ý, nhiệt độ là "+records.get(9).getTemp()+" lúc : "+records.get(9).getTime());
             }
 

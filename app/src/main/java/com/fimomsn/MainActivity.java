@@ -144,7 +144,7 @@ public class MainActivity extends Activity implements  ChildEventListener {
                 listData = new ArrayList<Record>();
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     Record record = new Record();
-                    if( Integer.valueOf(messageSnapshot.child("temp").getValue().toString().substring(0,2)) > 22 ) {
+                    if( Integer.valueOf(messageSnapshot.child("temp").getValue().toString().substring(0,2)) > 29 ) {
                         record.setStatus("hot");
                     }
                     else {
