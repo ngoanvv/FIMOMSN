@@ -33,6 +33,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class MainActivity extends Activity implements  ChildEventListener {
     private FirebaseDatabase firebaseDatabase;
@@ -40,8 +43,7 @@ public class MainActivity extends Activity implements  ChildEventListener {
     private TextView tv_temperature,tv_time;
     private String TAG="MSN";
     private ListView listView;
-    private ArrayList<Record> records;
-    private ArrayList<Record> listData;
+    private List<Record> records;
     private CustomAdapter adapter;
     private Context context;
     private int alarmID=111;
@@ -66,7 +68,6 @@ public class MainActivity extends Activity implements  ChildEventListener {
     {
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         manager.cancel(pendingIntent);
-        Toast.makeText(this, "Alarm Canceled", Toast.LENGTH_SHORT).show();
     }
     private void setAlarm()
     {
@@ -140,8 +141,7 @@ public class MainActivity extends Activity implements  ChildEventListener {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                records = new ArrayList<>(8);
-                listData = new ArrayList<Record>();
+                records = new ArrayList<Record>();
                 for (DataSnapshot messageSnapshot: dataSnapshot.getChildren()) {
                     Record record = new Record();
                     if( Integer.valueOf(messageSnapshot.child("temp").getValue().toString().substring(0,2)) > 29 ) {
@@ -157,6 +157,7 @@ public class MainActivity extends Activity implements  ChildEventListener {
                 if(Integer.valueOf(records.get(9).getTemp().substring(0,2))>29)
                     makeNotification("Chú ý, nhiệt độ là "+records.get(9).getTemp()+" lúc : "+records.get(9).getTime());
                 Log.d(TAG,"size:"+records.size()+"");
+                Collections.reverse(records);
                 updateDate(records);
             }
 
@@ -167,7 +168,7 @@ public class MainActivity extends Activity implements  ChildEventListener {
         });
 
     }
-    private void updateDate(ArrayList<Record> data)
+    private void updateDate(List<Record> data)
     {
         adapter = new CustomAdapter(MainActivity.this,R.layout.item_listview,data);
         listView.setAdapter(adapter);
@@ -181,7 +182,7 @@ public class MainActivity extends Activity implements  ChildEventListener {
     @Override
     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
         tv_temperature.setText(dataSnapshot.child("temp").getValue().toString().substring(0,2)+(char) 0x00B0 );
-        tv_time.setText(dataSnapshot.child("time").getValue().toString()+", "+dataSnapshot.child("date").getValue().toString());
+        tv_time.setText(dataSnapshot.child("time").getValue().toString()+", ngày "+dataSnapshot.child("date").getValue().toString());
 
     }
 

@@ -13,6 +13,7 @@ import com.fimomsn.R;
 import com.fimomsn.model.Record;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Diep_Chelsea on 25/08/2016.
@@ -20,10 +21,10 @@ import java.util.ArrayList;
 public class CustomAdapter extends ArrayAdapter<Record> {
     private Activity context;
     private int layoutID;
-    private ArrayList<Record> data;
+    private List<Record> data;
 
 
-    public CustomAdapter(Activity context, int resource, ArrayList<Record> objects) {
+    public CustomAdapter(Activity context, int resource, List<Record> objects) {
         super(context, resource, objects);
         this.context=context;
         this.layoutID=resource;
